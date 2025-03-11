@@ -11,19 +11,12 @@
 #include "Texture.h"
 #include "DepthStencilBuffer.h"
 
-#include "Input.h"
-#include "Timer.h"
-
 class Engine
 {
 public:
 
 	void Init(const WindowInfo& info);
-	void Render();
-
-public:
 	void Update();
-	void LateUpdate();
 
 public:
 	shared_ptr<Device> GetDevice() { return _device; }
@@ -33,11 +26,10 @@ public:
 	shared_ptr<TableDescriptorHeap> GetTableDescHeap() { return _tableDescHeap; }
 	shared_ptr<DepthStencilBuffer> GetDepthStencilBuffer() { return _depthStencilBuffer; }
 
-	shared_ptr<Input> GetInput() { return _input; }
-	shared_ptr<Timer> GetTimer() { return _timer; }
-
 	shared_ptr<ConstantBuffer> GetConstantBuffer(CONSTANT_BUFFER_TYPE type) { return _constantBuffers[static_cast<uint8>(type)]; }
+
 public:
+	void Render();
 	void RenderBegin();
 	void RenderEnd();
 
@@ -61,10 +53,6 @@ private:
 	shared_ptr<RootSignature> _rootSignature;
 	shared_ptr<TableDescriptorHeap> _tableDescHeap;
 	shared_ptr<DepthStencilBuffer> _depthStencilBuffer;
-
-	// 엔진을 위한
-	shared_ptr<Input> _input;
-	shared_ptr<Timer> _timer;
 
 	vector<shared_ptr<ConstantBuffer>> _constantBuffers;
 };
