@@ -19,9 +19,6 @@ void Mesh::Render()
 	// 1) Buffer에다가 데이터 세팅
 	// 2) Buffer의 주소를 register에다가 전송
 	// 3) 모두 세팅이 끝났으면 TableDescHeap 커밋
-	CONST_BUFFER(CONSTANT_BUFFER_TYPE::TRANSFORM)->PushData(&_transform, sizeof(_transform));
-
-	_mat->Update();
 
 	GEngine->GetTableDescHeap()->CommitTable();
 	
