@@ -102,9 +102,18 @@ struct WindowInfo {
 
 struct Vertex
 {
+	Vertex(){}
+
+	Vertex(Vec3 p, Vec2 u, Vec3 n, Vec3 t)
+		: pos(p), uv(u), normal(n), tangent(t)
+	{
+
+	}
+
 	Vec3 pos; // X Y Z
-	Vec4 color; // R G B A
 	Vec2 uv;
+	Vec3 normal;
+	Vec3 tangent;
 };
 
 #define DECLARE_SINGLE(type)		\
